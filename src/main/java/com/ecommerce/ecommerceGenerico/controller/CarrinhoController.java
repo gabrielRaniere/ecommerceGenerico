@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.ecommerceGenerico.entityes.ItemEntity;
 import com.ecommerce.ecommerceGenerico.service.CarrinhoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping(path = "/usuario/carrinho/{carrinhoId}")
 public class CarrinhoController {
@@ -22,11 +24,13 @@ public class CarrinhoController {
 		this.carrinhoService = carrinhoService;
 	}
 	
+	@Operation(summary = "lista todos os itens do carrinho do usuário atual")
 	@GetMapping()
 	public List<ItemEntity> listarItensCarrinho(@PathVariable Long carrinhoId) { 
 		return carrinhoService.listarItensCarrinho(carrinhoId);
 	}
 	
+	@Operation(summary = "adiciona ao carrinho do usuário atual um novo item(produto + quantidade)")
 	@PostMapping()
 	public ItemEntity
 	adicionarItemCarrinho(

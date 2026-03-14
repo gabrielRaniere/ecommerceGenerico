@@ -1,4 +1,4 @@
-# 🛒 E-commerce API (Spring Boot)
+#  E-commerce API (Spring Boot)
 
 API REST de um sistema de **e-commerce** desenvolvida com **Java e Spring Boot**, contendo funcionalidades de gerenciamento de usuários, produtos, carrinho de compras e pedidos.
 
@@ -6,7 +6,7 @@ O sistema simula o fluxo básico de uma loja virtual, permitindo que usuários a
 
 ---
 
-# 🚀 Tecnologias Utilizadas
+#  Tecnologias Utilizadas
 
 * Java 17
 * Spring Boot
@@ -20,7 +20,7 @@ O sistema simula o fluxo básico de uma loja virtual, permitindo que usuários a
 
 ---
 
-# 🏗️ Arquitetura do Projeto
+#  Arquitetura do Projeto
 
 O projeto segue uma **arquitetura em camadas (Layered Architecture)**:
 
@@ -69,7 +69,7 @@ exception
 
 # 📦 Funcionalidades
 
-### 👤 Usuários
+###  Usuários
 
 * Criar usuário
 * Listar usuários
@@ -80,7 +80,7 @@ Cada usuário possui automaticamente um **carrinho de compras**.
 
 ---
 
-### 📦 Produtos
+###  Produtos
 
 * Criar produto
 * Listar produtos
@@ -90,7 +90,7 @@ Cada usuário possui automaticamente um **carrinho de compras**.
 
 ---
 
-### 🛒 Carrinho
+###  Carrinho
 
 * Listar itens do carrinho
 * Adicionar produto ao carrinho
@@ -99,7 +99,7 @@ Cada usuário possui automaticamente um **carrinho de compras**.
 
 ---
 
-### 📑 Pedidos
+###  Pedidos
 
 * Criar pedido a partir do carrinho
 * Cálculo automático do valor total
@@ -108,7 +108,7 @@ Cada usuário possui automaticamente um **carrinho de compras**.
 
 ---
 
-# 🔗 Endpoints Principais
+#  Endpoints Principais
 
 ## Usuários
 
@@ -152,7 +152,7 @@ DELETE /usuario/{usuarioId}
 
 ---
 
-# 📦 Produtos
+#  Produtos
 
 ### Criar produto
 
@@ -194,7 +194,7 @@ DELETE /produto/{id}
 
 ---
 
-# 🛒 Carrinho
+#  Carrinho
 
 ### Listar itens do carrinho
 
@@ -219,7 +219,7 @@ quantidade
 
 ---
 
-# 📑 Pedido
+#  Pedido
 
 ### Criar pedido
 
@@ -236,7 +236,7 @@ O sistema:
 
 ---
 
-# ⚠️ Tratamento de Exceções
+#  Tratamento de Exceções
 
 O sistema possui **tratamento global de exceções** utilizando:
 
@@ -261,7 +261,7 @@ Resposta padrão da API:
 
 ---
 
-# 📊 Modelo de Dados
+#  Modelo de Dados
 
 Relacionamentos principais:
 
@@ -306,12 +306,16 @@ mvn spring-boot:run
 
 ---
 
+### 4 DOCUMENTAÇÃO COM SWAGGER
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
 # 📌 Melhorias Futuras
 
 * Implementar **Spring Security + JWT**
 * Criar **DTOs para resposta da API**
 * Implementar **testes unitários (JUnit / Mockito)**
-* Adicionar **documentação com Swagger**
 * Implementar **paginação de produtos**
 * Criar **sistema de autenticação de usuários**
 

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ecommerce.ecommerceGenerico.entityes.UsuarioEntity;
 import com.ecommerce.ecommerceGenerico.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -23,12 +25,14 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
-
+    
+    @Operation(summary = "lista todos os usuários da aplicação")
     @GetMapping
     public Iterable<UsuarioEntity> listaTodosUsuarios() {
         return usuarioService.listaUsuarios();
     }
-
+    
+    @Operation(summary = "recebe nome, email e senha, e criar o cadastro de um novo usuário")
     @PostMapping
     public void adicionaUsuario(
             @RequestParam String nome,
@@ -38,6 +42,7 @@ public class UsuarioController {
         usuarioService.adicionaUsuario(nome, email, senha);
     }
     
+    @Operation(summary = "recebe um id no path pega o usuário no banco e faz as alterações a partir daí")
     @PutMapping("/{usuarioId}")
     public UsuarioEntity atualizaUsuario(
     		@PathVariable Long usuarioId,
@@ -47,6 +52,7 @@ public class UsuarioController {
     	return usuarioService.atualizaUsuario(usuarioId, nome, email, senha);
     }
     
+    @Operation(summary = "remove um usuário específico com base no id do path")
     @DeleteMapping("/{usuarioId}")
     public String removeUsuario(@PathVariable Long usuarioId) {
     	return usuarioService.removeUsuario(usuarioId);
