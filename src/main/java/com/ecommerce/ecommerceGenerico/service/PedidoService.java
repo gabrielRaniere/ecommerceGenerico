@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.ecommerceGenerico.client.Email;
 import com.ecommerce.ecommerceGenerico.entityes.CarrinhoEntity;
 import com.ecommerce.ecommerceGenerico.entityes.ItemEntity;
 import com.ecommerce.ecommerceGenerico.entityes.PedidoEntity;
@@ -24,15 +25,19 @@ public class PedidoService {
 	CarrinhoRepository carrinhoRepository;
 	ProdutoRepository produtoRepository;
 	
+	Email emailService;
+	
 	public PedidoService(
 			PedidoRepository pedidoRepository,
 			UserRepository userRepository,
 			CarrinhoRepository carrinhoRepository,
-			ProdutoRepository produtoRepository) {
+			ProdutoRepository produtoRepository,
+			Email emailService) {
 		this.pedidoRepository = pedidoRepository;
 		this.userRepository = userRepository;
 		this.carrinhoRepository = carrinhoRepository;
 		this.produtoRepository = produtoRepository;
+		this.emailService = emailService;
 	}
 	
 	public List<PedidoEntity> listarPedidos() {
@@ -58,6 +63,8 @@ public class PedidoService {
 		apagaItensCarrinho(usuarioAtual.getCarrinhoEntity());
 		
 		PedidoEntity pedido = new PedidoEntity(usuarioAtual, OffsetDateTime.now(), totalPagar);
+		
+		emailService.enviaEmail(usuarioAtual.getEmail(), usuarioAtual.getNome(), totalPagar);
 		return pedidoRepository.save(pedido);
 	}
 
