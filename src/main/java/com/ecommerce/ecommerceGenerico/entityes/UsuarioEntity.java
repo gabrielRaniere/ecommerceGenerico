@@ -3,6 +3,7 @@ package com.ecommerce.ecommerceGenerico.entityes;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -117,6 +118,26 @@ public class UsuarioEntity {
 
 	public void setPedidos(List<PedidoEntity> pedidos) {
 		this.pedidos = pedidos;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, nome, senha);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UsuarioEntity other = (UsuarioEntity) obj;
+		return Objects.equals(email, other.email) && Objects.equals(nome, other.nome)
+				&& Objects.equals(senha, other.senha);
 	}
 	
 	
